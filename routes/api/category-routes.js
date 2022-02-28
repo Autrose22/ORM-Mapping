@@ -34,7 +34,7 @@ router.get('/:id', (req, res) => {
   })
   .then(categoryData => {
     if (!categoryData) {
-      res.status(404).json({ message: 'No Category found with this id' });
+      res.status(404).json({ message: 'No Category with this id' });
       return;
   }
     res.json(categoryData)
@@ -60,22 +60,27 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
   // update a category by its `id` value
-  Category.update(req.body, {
-    where: {
+  Category.update( 
+    {
+      category_name: req.body.category_name
+    },
+    {
+      where: {
         id: req.params.id
+      }
+    } 
+  )
+  .then(categoryData => {
+    if (!categoryData) {
+        res.status(404).json({ message: 'No Category with this id' });
+        return;
     }
-})
-    .then(dbCategoryData => {
-        if (!dbCategoryData[0]) {
-            res.status(404).json({ message: 'No Category found with this id' });
-            return;
-        }
-        res.json(dbCategoryData);
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+    res.json(categoryData);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
 
 router.delete('/:id', (req, res) => {
@@ -87,7 +92,7 @@ router.delete('/:id', (req, res) => {
   })
   .then(categoryData => {
     if (!categoryData) {
-        res.status(404).json({ message: 'No Category found with this id' });
+        res.status(404).json({ message: 'No Category with this id' });
         return;
     }
     res.json(categoryData);
