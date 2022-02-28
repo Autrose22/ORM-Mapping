@@ -1,0 +1,20 @@
+{
+  "name": "orm-mapping",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Autrose22/ORM-Mapping.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Autrose22/ORM-Mapping/issues"
+  },
+  "homepage": "https://github.com/Autrose22/ORM-Mapping#readme"
+}
